@@ -1,4 +1,4 @@
-import { InputAdornment, Tooltip, SvgIcon, Typography, Box, Divider, Button, Grid } from '@mui/material'
+import { InputAdornment, Tooltip, SvgIcon, Box, Divider, Button, Grid } from '@mui/material'
 import { FormProvider, useForm } from 'react-hook-form'
 import { useMnemonicSafeName } from '@/hooks/useMnemonicName'
 import InfoIcon from '@/public/images/notifications/info.svg'
@@ -13,8 +13,6 @@ import useIsWrongChain from '@/hooks/useIsWrongChain'
 import NetworkWarning from '@/components/new-safe/create/NetworkWarning'
 import NameInput from '@/components/common/NameInput'
 import { AppRoutes } from '@/config/routes'
-import MUILink from '@mui/material/Link'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 type SetNameStepForm = {
