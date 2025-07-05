@@ -3,7 +3,7 @@ import { ContentSecurityPolicy, StrictTransportSecurity } from '@/config/securit
 import lightPalette from '@/components/theme/lightPalette'
 import darkPalette from '@/components/theme/darkPalette'
 
-const descriptionText = 'Eternal Safe is a decentralized fork of Safe{Wallet}.'
+const descriptionText = 'Zenchain Safe is a decentralized fork of Safe{Wallet}.'
 const titleText = 'Eternal Safe'
 
 const MetaTags = () => (

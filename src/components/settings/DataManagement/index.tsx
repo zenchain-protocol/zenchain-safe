@@ -118,7 +118,7 @@ const DataManagement = () => {
                   mr: 0.5,
                 }}
               />
-              Because Eternal Safe does not rely on any backend, it is even more important to keep a backup of this
+              Because Zenchain Safe does not rely on any backend, it is even more important to keep a backup of this
               data. If you ever switch to a new browser or onboard another signer, this is the best way to get setup.
             </Typography>
           </Grid>

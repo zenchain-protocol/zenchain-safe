@@ -8,7 +8,7 @@ const SecurityLoginPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Eternal Safe – Settings – Security & Login'}</title>
+        <title>{'Zenchain Safe – Settings – Security & Login'}</title>
       </Head>
 
       <SettingsHeader />

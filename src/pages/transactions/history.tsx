@@ -9,7 +9,7 @@ const History: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Eternal Safe – Transaction history'}</title>
+        <title>{'Zenchain Safe – Transaction history'}</title>
       </Head>
 
       <TxHeader />

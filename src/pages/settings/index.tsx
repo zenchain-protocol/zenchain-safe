@@ -17,7 +17,7 @@ const Settings: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Eternal Safe – Settings'}</title>
+        <title>{'Zenchain Safe – Settings'}</title>
       </Head>
     </>
   )

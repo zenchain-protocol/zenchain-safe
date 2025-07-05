@@ -52,7 +52,7 @@ export const ImportFileUpload = ({
 
   return (
     <>
-      <Typography>Import Eternal Safe data by uploading a file in the area below.</Typography>
+      <Typography>Import Zenchain Safe data by uploading a file in the area below.</Typography>
 
       <FileUpload
         fileType={FileTypes.JSON}
@@ -74,7 +74,7 @@ export const ImportFileUpload = ({
             mr: 0.5,
           }}
         />
-        Only JSON files exported from Eternal Safe can be imported.
+        Only JSON files exported from Zenchain Safe can be imported.
       </Typography>
     </>
   )

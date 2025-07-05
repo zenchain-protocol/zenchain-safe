@@ -38,7 +38,7 @@ jobs:
           # Markdown template for the release notes
           RELEASE_NOTE_TEMPLATE=$(cat << EOF
           #### ENS Domain
-          Every version of Eternal Safe is connected to an immutable ENS subdomain.
+          Every version of Zenchain Safe is connected to an immutable ENS subdomain.
 
           [https://$GITHUB_REF_NAME.eternalsafe.eth](https://$GITHUB_REF_NAME.eternalsafe.eth)  
           __(Recommended)__ _requires Brave Browser or Metamask Extension_  
@@ -50,7 +50,7 @@ jobs:
           $IPFS_HASH
           \`\`\`
 
-          You can also view this version of Eternal Safe through any IPFS Gateway. Note: only subdomain gateways are supported.
+          You can also view this version of Zenchain Safe through any IPFS Gateway. Note: only subdomain gateways are supported.
 
           [ipfs://$IPFS_HASH](ipfs://$IPFS_HASH)  
           __(Recommended)__ _requires Brave Browser or IPFS Desktop_  

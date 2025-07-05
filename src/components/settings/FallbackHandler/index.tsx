@@ -29,7 +29,7 @@ export const FallbackHandler = (): ReactElement | null => {
     hasFallbackHandler && safe.fallbackHandler?.value === fallbackHandlerDeployment?.networkAddresses[safe.chainId]
 
   const warning = !hasFallbackHandler ? (
-    <>Eternal Safe may not work correctly as no fallback handler is currently set.</>
+    <>Zenchain Safe may not work correctly as no fallback handler is currently set.</>
   ) : !isOfficial ? (
     <>
       An <b>unofficial</b> fallback handler is currently set.

@@ -37,7 +37,7 @@ export const ContractVersion = () => {
               icon={<SvgIcon component={InfoIcon} inheritViewBox color="secondary" />}
             >
               <AlertTitle sx={{ fontWeight: 700 }}>
-                This version of Eternal Safe works best with Safe version {LATEST_SAFE_VERSION}.
+                This version of Zenchain Safe works best with Safe version {LATEST_SAFE_VERSION}.
               </AlertTitle>
 
               <Typography>
@@ -50,7 +50,7 @@ export const ContractVersion = () => {
               icon={<SvgIcon component={InfoIcon} inheritViewBox color="secondary" />}
             >
               <AlertTitle sx={{ fontWeight: 700 }}>
-                This version of Eternal Safe works best with {LATEST_SAFE_VERSION}.
+                This version of Zenchain Safe works best with {LATEST_SAFE_VERSION}.
               </AlertTitle>
 
               <Typography>

@@ -23,7 +23,7 @@ const Appearance: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Eternal Safe – Settings – Appearance'}</title>
+        <title>{'Zenchain Safe – Settings – Appearance'}</title>
       </Head>
 
       <SettingsHeader />

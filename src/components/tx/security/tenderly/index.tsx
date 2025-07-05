@@ -146,7 +146,7 @@ export const TxSimulation = (props: TxSimulationProps): ReactElement | null => {
     return (
       <ErrorMessage level="info">
         <Typography fontWeight="bold">Tenderly not configured</Typography>
-        You can connect your Tenderly account to Eternal Safe in order to simulate transactions.{' '}
+        You can connect your Tenderly account to Zenchain Safe in order to simulate transactions.{' '}
         <Link href={{ pathname: AppRoutes.settings.environmentVariables, query: router.query }} legacyBehavior passHref>
           <MuiLink>Configure Tenderly</MuiLink>
         </Link>

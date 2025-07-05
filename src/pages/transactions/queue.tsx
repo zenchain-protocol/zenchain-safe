@@ -9,7 +9,7 @@ const Queue: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Eternal Safe – Transaction queue'}</title>
+        <title>{'Zenchain Safe – Transaction queue'}</title>
       </Head>
 
       <TxHeader />

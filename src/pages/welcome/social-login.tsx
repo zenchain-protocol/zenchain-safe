@@ -6,7 +6,7 @@ const SocialLogin: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Eternal Safe – Welcome'}</title>
+        <title>{'Zenchain Safe – Welcome'}</title>
       </Head>
 
       <NewSafeSocial />

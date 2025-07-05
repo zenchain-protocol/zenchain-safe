@@ -7,7 +7,7 @@ const EnvironmentVariablesPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Eternal Safe – Settings – Environment variables'}</title>
+        <title>{'Zenchain Safe – Settings – Environment variables'}</title>
       </Head>
 
       <SettingsHeader />

@@ -142,11 +142,11 @@ describe('useSafeNotifications', () => {
       expect(showNotification).toHaveBeenCalledWith({
         variant: 'warning',
         message: `This Safe Account was created with an unsupported base contract.
-            Eternal Safe may not work correctly, proceed at your own risk.`,
+            Zenchain Safe may not work correctly, proceed at your own risk.`,
         groupKey: 'invalid-mastercopy',
         link: {
           href: 'https://github.com/eternalsafe/wallet/releases/latest',
-          title: 'Check for Eternal Safe updates',
+          title: 'Check for Zenchain Safe updates',
         },
       })
     })

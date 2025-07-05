@@ -71,7 +71,7 @@ const SignTxButton = ({
         try {
           const fullLink = location.origin + link
 
-          const message = `Please sign this Eternal Safe transaction for the Safe: ${safe}. 
+          const message = `Please sign this Zenchain Safe transaction for the Safe: ${safe}. 
 Current confirmations: ${txDetails.detailedExecutionInfo.confirmations.length} of ${txDetails.detailedExecutionInfo.confirmationsRequired}.
 
 ${fullLink}
@@ -119,7 +119,7 @@ ${fullLink}
           placement="top"
           text={
             <>
-              Eternal Safe relies on smart links to share transaction details.
+              Zenchain Safe relies on smart links to share transaction details.
               <br />
               These links are unique to each transaction and should be shared with other signers in order to collect
               signatures and share full transaction details.

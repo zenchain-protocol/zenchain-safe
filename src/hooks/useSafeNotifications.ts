@@ -13,7 +13,7 @@ import { OFFICIAL_APP_URL, REPO_LATEST_RELEASE_URL } from '@/config/constants'
 
 const REPO_LINK = {
   href: REPO_LATEST_RELEASE_URL,
-  title: 'Check for Eternal Safe updates',
+  title: 'Check for Zenchain Safe updates',
 }
 
 const OFFICIAL_LINK = {
@@ -136,7 +136,7 @@ const useSafeNotifications = (): void => {
       showNotification({
         variant: 'warning',
         message: `This Safe Account was created with an unsupported base contract.
-            Eternal Safe may not work correctly, proceed at your own risk.`,
+            Zenchain Safe may not work correctly, proceed at your own risk.`,
         groupKey: 'invalid-mastercopy',
         link: REPO_LINK,
       }),
