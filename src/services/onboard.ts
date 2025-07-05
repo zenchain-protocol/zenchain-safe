@@ -40,7 +40,7 @@ export const createOnboard = (
     },
 
     appMetadata: {
-      name: 'Eternal Safe',
+      name: 'Zenchain Safe',
       icon: location.origin + '/images/safe-logo-green.png',
       description: 'Zenchain Safe is a decentralized fork of Safe{Wallet}.',
       recommendedInjectedWallets: getRecommendedInjectedWallets(),

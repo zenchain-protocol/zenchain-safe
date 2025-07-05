@@ -97,7 +97,7 @@ export const CreateSafeStatus = ({ setProgressColor, setStep }: StepRenderProps<
           <Divider />
           <Box className={layoutCss.row}>
             <Button data-testid="start-using-safe-btn" variant="contained" onClick={onFinish}>
-              Start using Eternal Safe
+              Start using Zenchain Safe
             </Button>
           </Box>
         </>

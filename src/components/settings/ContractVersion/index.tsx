@@ -54,10 +54,10 @@ export const ContractVersion = () => {
               </AlertTitle>
 
               <Typography>
-                You appear to be using an unsupported version of Safe, which may cause issues using Eternal Safe. You
+                You appear to be using an unsupported version of Safe, which may cause issues using Zenchain Safe. You
                 can continue to use it at your own risk or{' '}
                 <Link href={REPO_LATEST_RELEASE_URL} target="_blank" rel="noreferrer">
-                  check if there is a newer version of Eternal Safe
+                  check if there is a newer version of Zenchain Safe
                 </Link>
                 .
               </Typography>

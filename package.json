@@ -1,6 +1,6 @@
 {
-  "name": "eternalsafe-wallet",
-  "homepage": "https://github.com/eternalsafe/wallet",
+  "name": "zenchain-safe",
+  "homepage": "https://github.com/zenchain-protocol/zenchain-safe",
   "license": "GPL-3.0",
   "version": "1",
   "type": "module",

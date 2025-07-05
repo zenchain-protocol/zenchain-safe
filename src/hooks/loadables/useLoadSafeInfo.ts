@@ -60,7 +60,7 @@ export const getSafeInfo = async (sdk: Safe, implementation: string): Promise<Sa
     fallbackHandler: addressEx(fallbackHandler),
     version,
 
-    // these tags are used to force hook reloads, not needed in Eternal Safe
+    // these tags are used to force hook reloads, not needed in Zenchain Safe
     collectiblesTag: '',
     txQueuedTag: '',
     txHistoryTag: '',

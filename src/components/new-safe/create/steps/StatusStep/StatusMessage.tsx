@@ -49,7 +49,7 @@ const getStep = (status: SafeCreationStatus) => {
     case SafeCreationStatus.INDEX_FAILED:
       return {
         description: 'Your Safe Account is successfully created!',
-        instruction: 'You can already open Eternal Safe.',
+        instruction: 'You can already open Zenchain Safe.',
       }
   }
 }

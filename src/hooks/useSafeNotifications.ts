@@ -99,7 +99,7 @@ const useSafeNotifications = (): void => {
         groupKey: OUTDATED_VERSION_KEY,
 
         message: isUnsupported
-          ? `Safe Account version ${version} is not supported by Eternal Safe. You can update your Safe Account in Safe{Wallet}.`
+          ? `Safe Account version ${version} is not supported by Zenchain Safe. You can update your Safe Account in Safe{Wallet}.`
           : `Your Safe Account version ${version} is out of date. Please update it using Safe{Wallet}.`,
 
         link: OFFICIAL_LINK,

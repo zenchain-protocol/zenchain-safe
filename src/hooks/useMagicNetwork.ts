@@ -8,6 +8,7 @@ import useChainId from '@/hooks/useChainId'
 import useChains from './useChains'
 import { showNotification } from '@/store/notificationsSlice'
 import { useRouter } from 'next/router'
+import { setLastChainId } from '@/store/sessionSlice'
 
 export const useMagicNetwork = (): void => {
   const router = useRouter()
@@ -24,7 +25,6 @@ export const useMagicNetwork = (): void => {
     const shortName = process.env.NEXT_PUBLIC_CONFIG_CHAIN_SHORT_NAME!
     const currencyName = process.env.NEXT_PUBLIC_CONFIG_CURRENCY!
     const currencySymbol = process.env.NEXT_PUBLIC_CONFIG_SYMBOL!
-    const currencyLogo = searchParams.get('logo')
     const explorerAddr = process.env.NEXT_PUBLIC_CONFIG_EXPR_ADDR!
     const explorerTx = process.env.NEXT_PUBLIC_CONFIG_EXPR_TX!
     const l2 = searchParams.get('l2')
@@ -64,14 +64,14 @@ export const useMagicNetwork = (): void => {
         chainName,
         shortName,
         description: '',
-        chainLogoUri: currencyLogo || null,
+        chainLogoUri: `/images/chains/${chainIdParam}.png` || null,
         l2: l2 === 'true',
         isTestnet: isTestnet === 'true',
         nativeCurrency: {
           name: currencyName,
           symbol: currencySymbol,
           decimals: 18,
-          logoUri: currencyLogo || '',
+          logoUri: `/images/chains/${chainIdParam}.png` || '',
         },
         blockExplorerUriTemplate: {
           address: explorerAddr || 'https://example.com/address/{{address}}',
@@ -111,6 +111,8 @@ export const useMagicNetwork = (): void => {
         rpc: rpcUrl,
       }),
     )
+
+    dispatch(setLastChainId(chainIdParam))
 
     //router.replace({ query: { chain: shortName } })
   }, [searchParams, dispatch, chainId, supportedChains, router])

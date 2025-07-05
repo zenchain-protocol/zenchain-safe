@@ -86,7 +86,7 @@ const WebCoreApp = ({
   return (
     <StoreHydrator>
       <Head>
-        <title key="default-title">{'Eternal Safe'}</title>
+        <title key="default-title">{'Zenchain Safe'}</title>
         <MetaTags />
       </Head>
 

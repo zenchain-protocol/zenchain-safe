@@ -4,7 +4,7 @@ import lightPalette from '@/components/theme/lightPalette'
 import darkPalette from '@/components/theme/darkPalette'
 
 const descriptionText = 'Zenchain Safe is a decentralized fork of Safe{Wallet}.'
-const titleText = 'Eternal Safe'
+const titleText = 'Zenchain Safe'
 
 const MetaTags = () => (
   <>
