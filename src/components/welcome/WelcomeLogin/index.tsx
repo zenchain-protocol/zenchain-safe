@@ -30,7 +30,7 @@ const WelcomeLogin = () => {
     <Paper className={css.loginCard} data-testid="welcome-login">
       <Box className={css.loginContent}>
         <Typography variant="h3" mt="auto" pt={5} fontWeight={700}>
-          Eternal Safe
+          Zenchain Safe
         </Typography>
         {/* TODO(eternalsafe): Gracefully handle the web3 variable loading in after sometime */}
         {(web3 || customRpcUrl) && !forceShowRpcInput ? (
@@ -68,11 +68,7 @@ const WelcomeLogin = () => {
           </Typography>
         )}
 
-        <Typography variant="subtitle2" textAlign="center" mt="auto" pt={3}>
-          <Link type="button" component="button" onClick={toggleShowRpcInput} color="primary">
-            {forceShowRpcInput ? 'Close' : 'Open'} RPC URL input
-          </Link>
-        </Typography>
+        <Typography variant="subtitle2" textAlign="center" mt="auto" pt={3}></Typography>
       </Box>
     </Paper>
   )

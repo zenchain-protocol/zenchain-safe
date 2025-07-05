@@ -138,14 +138,6 @@ const SetAddressStep = ({ data, onSubmit, onBack }: StepRenderProps<LoadSafeForm
           </Grid>
 
           <AddressInput label="Safe Account" validate={validateSafeAddress} name={Field.address} />
-
-          <Typography mt={4}>
-            By continuing, you agree to have read and understood the{' '}
-            <Link href={AppRoutes.imprint} passHref legacyBehavior>
-              <MUILink>legal imprint</MUILink>
-            </Link>
-            .
-          </Typography>
         </Box>
 
         <Divider />

@@ -37,24 +37,10 @@ const Footer = (): ReactElement | null => {
     <footer className={css.container}>
       <ul>
         <li>
-          <Typography variant="caption">Eternal Safe</Typography>
-        </li>
-        <li>
-          <FooterLink href={getHref(AppRoutes.imprint)}>Imprint</FooterLink>
+          <Typography variant="caption">Zenchain Safe</Typography>
         </li>
         <li>
           <FooterLink href={getHref(AppRoutes.settings.index)}>Preferences</FooterLink>
-        </li>
-        <li>
-          <ExternalLink href={REPO_DISCUSSIONS_URL} noIcon sx={{ span: { textDecoration: 'underline' } }}>
-            Help
-          </ExternalLink>
-        </li>
-
-        <li>
-          <ExternalLink href={`${packageJson.homepage}/releases/tag/v${packageJson.version}`} noIcon>
-            <SvgIcon component={GitHubIcon} inheritViewBox fontSize="inherit" sx={{ mr: 0.5 }} /> v{packageJson.version}
-          </ExternalLink>
         </li>
       </ul>
     </footer>

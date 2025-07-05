@@ -18,17 +18,17 @@ export const useMagicNetwork = (): void => {
 
   useEffect(() => {
     // Get params
-    const chainIdParam = searchParams.get('chainId')
-    const chainName = searchParams.get('chain')
-    const rpcUrl = searchParams.get('rpc')
-    const shortName = searchParams.get('shortName')
-    const currencyName = searchParams.get('currency')
-    const currencySymbol = searchParams.get('symbol')
+    const chainIdParam = process.env.NEXT_PUBLIC_CONFIG_CHAIN_ID!
+    const chainName = process.env.NEXT_PUBLIC_CONFIG_CHAIN_NAME!
+    const rpcUrl = process.env.NEXT_PUBLIC_CONFIG_CHAIN_RPC!
+    const shortName = process.env.NEXT_PUBLIC_CONFIG_CHAIN_SHORT_NAME!
+    const currencyName = process.env.NEXT_PUBLIC_CONFIG_CURRENCY!
+    const currencySymbol = process.env.NEXT_PUBLIC_CONFIG_SYMBOL!
     const currencyLogo = searchParams.get('logo')
-    const explorerAddr = searchParams.get('expAddr')
-    const explorerTx = searchParams.get('expTx')
+    const explorerAddr = process.env.NEXT_PUBLIC_CONFIG_EXPR_ADDR!
+    const explorerTx = process.env.NEXT_PUBLIC_CONFIG_EXPR_TX!
     const l2 = searchParams.get('l2')
-    const isTestnet = searchParams.get('testnet')
+    const isTestnet = process.env.NEXT_PUBLIC_CONFIG_TESTNET
 
     // Return if no RPC param, chainId or chainName
     if (!rpcUrl || !chainIdParam || !chainName) return
@@ -86,15 +86,15 @@ export const useMagicNetwork = (): void => {
         },
         publicRpcUri: {
           authentication: 'NO_AUTH' as RPC_AUTHENTICATION,
-          value: decodeURIComponent(rpcUrl),
+          value: rpcUrl,
         },
         rpcUri: {
           authentication: 'NO_AUTH' as RPC_AUTHENTICATION,
-          value: decodeURIComponent(rpcUrl),
+          value: rpcUrl,
         },
         safeAppsRpcUri: {
           authentication: 'NO_AUTH' as RPC_AUTHENTICATION,
-          value: decodeURIComponent(rpcUrl),
+          value: rpcUrl,
         },
         transactionService: '',
         gasPrice: [],
@@ -108,11 +108,11 @@ export const useMagicNetwork = (): void => {
     dispatch(
       setRpc({
         chainId: chainIdParam,
-        rpc: decodeURIComponent(rpcUrl),
+        rpc: rpcUrl,
       }),
     )
 
-    router.replace({ query: { chain: shortName } })
+    //router.replace({ query: { chain: shortName } })
   }, [searchParams, dispatch, chainId, supportedChains, router])
 }
 

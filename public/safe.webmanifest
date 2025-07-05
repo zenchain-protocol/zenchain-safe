@@ -1,7 +1,7 @@
 {
-  "name": "Eternal Safe",
-  "short_name": "Eternal Safe",
-  "description": "Eternal Safe is a decentralized fork of Safe{Wallet}. ",
+  "name": "Zenchain Safe",
+  "short_name": "Zenchain Safe",
+  "description": "Zenchain Safe is a decentralized fork of Safe{Wallet}.",
   "icons": [
     {
       "src": "/favicons/android-chrome-192x192.png",

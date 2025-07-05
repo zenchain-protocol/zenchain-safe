@@ -94,13 +94,6 @@ function SetNameStep({
               </Box>
             </Grid>
           </Grid>
-          <Typography variant="body2" mt={2}>
-            By continuing, you agree to have read and understood the{' '}
-            <Link href={AppRoutes.imprint} passHref legacyBehavior>
-              <MUILink>legal imprint</MUILink>
-            </Link>
-            .
-          </Typography>
 
           {isWrongChain && <NetworkWarning />}
         </Box>

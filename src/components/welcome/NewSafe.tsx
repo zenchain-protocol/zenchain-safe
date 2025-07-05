@@ -33,14 +33,8 @@ const NewSafe = () => {
             </Typography>
 
             <Typography mb={1} color="static.main">
-              You are currently interacting with Eternal Safe, a fork of {'Safe{Wallet}'}.
+              You are currently interacting with Zenchain Safe.
             </Typography>
-
-            <ul className={css.bulletList}>
-              <BulletListItem text="Requires no backend services" />
-              <BulletListItem text="Can be run completely locally" />
-              <BulletListItem text="Funded by the Safe Grants Program" />
-            </ul>
           </div>
         </Grid>
       </Grid>
