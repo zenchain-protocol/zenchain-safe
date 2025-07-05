@@ -1,15 +1,9 @@
 import type { ReactElement } from 'react'
 
-import {
-  SidebarList,
-  SidebarListItemButton,
-  SidebarListItemIcon,
-  SidebarListItemText,
-} from '@/components/sidebar/SidebarList'
-import HelpCenterIcon from '@/public/images/sidebar/help-center.svg'
+import { SidebarList } from '@/components/sidebar/SidebarList'
 import { ListItem } from '@mui/material'
 import DebugToggle from '../DebugToggle'
-import { REPO_DISCUSSIONS_URL, IS_PRODUCTION } from '@/config/constants'
+import { IS_PRODUCTION } from '@/config/constants'
 
 const SidebarFooter = (): ReactElement => {
   return (
@@ -19,17 +13,6 @@ const SidebarFooter = (): ReactElement => {
           <DebugToggle />
         </ListItem>
       )}
-
-      <ListItem disablePadding>
-        <a target="_blank" rel="noopener noreferrer" href={REPO_DISCUSSIONS_URL} style={{ width: '100%' }}>
-          <SidebarListItemButton>
-            <SidebarListItemIcon color="primary">
-              <HelpCenterIcon />
-            </SidebarListItemIcon>
-            <SidebarListItemText bold>Need help?</SidebarListItemText>
-          </SidebarListItemButton>
-        </a>
-      </ListItem>
     </SidebarList>
   )
 }
