@@ -1,5 +1,5 @@
 import { useCallback, useContext } from 'react'
-import { SendNFTsButton, SendTokensButton } from '@/components/tx-flow/common/TxButton'
+import { CustomTxButton, SendNFTsButton, SendTokensButton } from '@/components/tx-flow/common/TxButton'
 import { Container, Grid, Paper, SvgIcon, Typography } from '@mui/material'
 import { TxModalContext } from '../../'
 import TokenTransferFlow from '../TokenTransfer'
@@ -9,12 +9,17 @@ import ChainIndicator from '@/components/common/ChainIndicator'
 import NewTxIcon from '@/public/images/transactions/new-tx.svg'
 
 import css from './styles.module.css'
+import CustomTxFlow from '../CustomTx'
 
 const NewTxFlow = () => {
   const { setTxFlow } = useContext(TxModalContext)
 
   const onTokensClick = useCallback(() => {
     setTxFlow(<TokenTransferFlow />)
+  }, [setTxFlow])
+
+  const onCustomTxClick = useCallback(() => {
+    setTxFlow(<CustomTxFlow />)
   }, [setTxFlow])
 
   const progress = 10
@@ -49,6 +54,8 @@ const NewTxFlow = () => {
               <SendTokensButton onClick={onTokensClick} />
 
               <SendNFTsButton />
+
+              <CustomTxButton onClick={onCustomTxClick} />
             </Grid>
           </Grid>
         </Grid>

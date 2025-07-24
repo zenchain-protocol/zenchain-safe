@@ -19,6 +19,14 @@ export const SendTokensButton = ({ onClick, sx }: { onClick: () => void; sx?: Bu
   )
 }
 
+export const CustomTxButton = ({ onClick, sx }: { onClick: () => void; sx?: ButtonProps['sx'] }) => {
+  return (
+    <Button onClick={onClick} variant="contained" sx={sx ?? buttonSx} fullWidth>
+      Custom transaction
+    </Button>
+  )
+}
+
 export const SendNFTsButton = () => {
   const router = useRouter()
   const { setTxFlow } = useContext(TxModalContext)
