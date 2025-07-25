@@ -19,7 +19,15 @@ export const SendTokensButton = ({ onClick, sx }: { onClick: () => void; sx?: Bu
   )
 }
 
-export const SendNFTsButton = () => {
+export const CustomTxButton = ({ onClick, sx }: { onClick: () => void; sx?: ButtonProps['sx'] }) => {
+  return (
+    <Button onClick={onClick} variant="contained" sx={sx ?? buttonSx} fullWidth>
+      Custom transaction
+    </Button>
+  )
+}
+
+export const SendNFTsButton = ({ sx }: { sx?: ButtonProps['sx'] }) => {
   const router = useRouter()
   const { setTxFlow } = useContext(TxModalContext)
 
@@ -28,7 +36,7 @@ export const SendNFTsButton = () => {
 
   return (
     <Link href={{ pathname: AppRoutes.balances.nfts, query: { safe: router.query.safe } }} passHref legacyBehavior>
-      <Button variant="contained" sx={buttonSx} fullWidth onClick={onClick}>
+      <Button variant="contained" sx={sx ?? buttonSx} fullWidth onClick={onClick}>
         Send NFTs
       </Button>
     </Link>

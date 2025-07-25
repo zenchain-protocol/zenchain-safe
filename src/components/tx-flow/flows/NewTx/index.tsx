@@ -1,20 +1,26 @@
 import { useCallback, useContext } from 'react'
-import { SendNFTsButton, SendTokensButton } from '@/components/tx-flow/common/TxButton'
+import { CustomTxButton, SendNFTsButton, SendTokensButton } from '@/components/tx-flow/common/TxButton'
 import { Container, Grid, Paper, SvgIcon, Typography } from '@mui/material'
 import { TxModalContext } from '../../'
 import TokenTransferFlow from '../TokenTransfer'
 import AssetsIcon from '@/public/images/sidebar/assets.svg'
+import AppsIcon from '@/public/images/apps/apps-icon.svg'
 import { ProgressBar } from '@/components/common/ProgressBar'
 import ChainIndicator from '@/components/common/ChainIndicator'
 import NewTxIcon from '@/public/images/transactions/new-tx.svg'
 
 import css from './styles.module.css'
+import CustomTxFlow from '../CustomTx'
 
 const NewTxFlow = () => {
   const { setTxFlow } = useContext(TxModalContext)
 
   const onTokensClick = useCallback(() => {
     setTxFlow(<TokenTransferFlow />)
+  }, [setTxFlow])
+
+  const onCustomTxClick = useCallback(() => {
+    setTxFlow(<CustomTxFlow />)
   }, [setTxFlow])
 
   const progress = 10
@@ -41,14 +47,25 @@ const NewTxFlow = () => {
             </Grid>
 
             <Grid item xs={12} md={5} className={css.pane} gap={2}>
-              <Typography variant="h4" className={css.type}>
-                <SvgIcon component={AssetsIcon} inheritViewBox color="secondary" />
-                Assets
-              </Typography>
+              <div>
+                <Typography variant="h4" className={css.type}>
+                  <SvgIcon component={AssetsIcon} inheritViewBox color="secondary" />
+                  Assets
+                </Typography>
 
-              <SendTokensButton onClick={onTokensClick} />
+                <SendTokensButton onClick={onTokensClick} sx={{ mt: 3 }} />
 
-              <SendNFTsButton />
+                <SendNFTsButton sx={{ mt: 2 }} />
+              </div>
+
+              <div>
+                <Typography variant="h4" className={css.type}>
+                  <SvgIcon component={AppsIcon} inheritViewBox color="secondary" />
+                  Smart contracts
+                </Typography>
+
+                <CustomTxButton onClick={onCustomTxClick} sx={{ mt: 2 }} />
+              </div>
             </Grid>
           </Grid>
         </Grid>
