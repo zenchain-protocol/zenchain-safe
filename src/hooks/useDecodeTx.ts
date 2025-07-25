@@ -1,5 +1,5 @@
 import { type SafeTransaction } from '@safe-global/safe-core-sdk-types'
-import { type DecodedDataResponse, getDecodedData } from '@safe-global/safe-gateway-typescript-sdk'
+import { type DecodedDataResponse } from '@safe-global/safe-gateway-typescript-sdk'
 import { getNativeTransferData } from '@/services/tx/tokenTransferParams'
 import { isEmptyHexData } from '@/utils/hex'
 import type { AsyncResult } from './useAsync'
@@ -14,10 +14,13 @@ const useDecodeTx = (tx?: SafeTransaction): AsyncResult<DecodedDataResponse> => 
   const nativeTransfer = isEmptyData && !isRejection ? getNativeTransferData(tx?.data) : undefined
 
   const [data = nativeTransfer, error, loading] = useAsync<DecodedDataResponse>(() => {
-    return
-    //if (!encodedData || isEmptyData) return
-    //return getDecodedData(chainId, encodedData, tx.data.to)
-  }, [chainId, encodedData, isEmptyData, tx?.data.to])
+    return undefined
+  }, [])
+
+  /*const [data = nativeTransfer, error, loading] = useAsync<DecodedDataResponse>(() => {
+    if (!encodedData || isEmptyData) return
+    return getDecodedData(chainId, encodedData, tx.data.to)
+  }, [chainId, encodedData, isEmptyData, tx?.data.to])*/
 
   return [data, error, loading]
 }

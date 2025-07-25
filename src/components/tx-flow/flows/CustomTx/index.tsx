@@ -10,6 +10,7 @@ enum Fields {
   data = 'data',
   contractFunction = 'contractFunction',
   functionInputs = 'functionInputs',
+  value = 'value',
 }
 
 export const CustomTxFields = { ...Fields }
@@ -20,6 +21,7 @@ export type CustomTxParams = {
   [Fields.data]: string
   [Fields.contractFunction]: string
   [Fields.functionInputs]: any[]
+  [Fields.value]: string
 }
 
 type TokenTransferFlowProps = Partial<CustomTxParams> & {
@@ -32,6 +34,7 @@ const defaultParams: CustomTxParams = {
   data: '',
   contractFunction: '',
   functionInputs: [],
+  value: '',
 }
 
 const CustomTxFlow = ({ txNonce, ...params }: TokenTransferFlowProps) => {

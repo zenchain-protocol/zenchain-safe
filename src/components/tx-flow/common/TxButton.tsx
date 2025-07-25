@@ -27,7 +27,7 @@ export const CustomTxButton = ({ onClick, sx }: { onClick: () => void; sx?: Butt
   )
 }
 
-export const SendNFTsButton = () => {
+export const SendNFTsButton = ({ sx }: { sx?: ButtonProps['sx'] }) => {
   const router = useRouter()
   const { setTxFlow } = useContext(TxModalContext)
 
@@ -36,7 +36,7 @@ export const SendNFTsButton = () => {
 
   return (
     <Link href={{ pathname: AppRoutes.balances.nfts, query: { safe: router.query.safe } }} passHref legacyBehavior>
-      <Button variant="contained" sx={buttonSx} fullWidth onClick={onClick}>
+      <Button variant="contained" sx={sx ?? buttonSx} fullWidth onClick={onClick}>
         Send NFTs
       </Button>
     </Link>

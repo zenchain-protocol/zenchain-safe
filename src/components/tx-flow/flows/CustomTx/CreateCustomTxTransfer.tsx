@@ -1,6 +1,7 @@
 import { type ReactElement, useContext, useEffect, useMemo } from 'react'
 import { type TokenInfo } from '@safe-global/safe-gateway-typescript-sdk'
-import { Controller, FormProvider, useForm } from 'react-hook-form'
+import { Controller, FormProvider, type RegisterOptions, useForm } from 'react-hook-form'
+import { isAddress } from 'ethers/lib/utils'
 import {
   Button,
   CardActions,
@@ -52,7 +53,7 @@ export const CreateCustomTxTransfer = ({
   onSubmit: (data: CustomTxParams) => void
   txNonce?: number
 }): ReactElement => {
-  const { setNonce, setNonceNeeded } = useContext(SafeTxContext)
+  const { setNonce } = useContext(SafeTxContext)
 
   useEffect(() => {
     if (txNonce) {
@@ -75,8 +76,8 @@ export const CreateCustomTxTransfer = ({
   } = formMethods
 
   const destination = watch(CustomTxFields.contractAddress)
+
   const abi = watch(CustomTxFields.abi)
-  const data = watch(CustomTxFields.data)
 
   const isAddressValid = !!destination && !errors[CustomTxFields.contractAddress]
 
@@ -106,11 +107,75 @@ export const CreateCustomTxTransfer = ({
     [abiEntries, selectedFunctionName],
   )
 
+  const getSolidityValidationRules = (type: string, label: string): RegisterOptions => {
+    const base: RegisterOptions = { required: `${label} is required` }
+
+    if (type === 'address') {
+      return {
+        ...base,
+        validate: (v: string) => isAddress(v) || 'Must be a valid Ethereum address',
+      }
+    }
+
+    if (/^u?int/.test(type)) {
+      return {
+        ...base,
+        validate: (v: string) => !isNaN(Number(v)) || 'Must be a numeric value',
+      }
+    }
+
+    if (type === 'bool') {
+      return {
+        ...base,
+        validate: (v: string) => v === 'true' || v === 'false' || 'Must be true or false',
+      }
+    }
+
+    if (type.startsWith('bytes')) {
+      return {
+        ...base,
+        validate: (v: string) => /^0x[0-9a-fA-F]+$/.test(v) || 'Must be hex (0x…)',
+      }
+    }
+
+    if (/^tuple(?:\[\])*$/i.test(type)) {
+      return {
+        ...base,
+        validate: (v: string) => {
+          try {
+            const parsed = JSON.parse(v)
+
+            if (type.endsWith('[]') && !Array.isArray(parsed)) {
+              return 'Must be a JSON array of tuples'
+            }
+            return true
+          } catch {
+            return 'Must be valid JSON'
+          }
+        },
+      }
+    }
+
+    return base
+  }
+
+  useEffect(() => {
+    formMethods.resetField('contractFunction', { defaultValue: '' })
+
+    formMethods.resetField('functionInputs', { defaultValue: {} })
+
+    formMethods.resetField('value', { defaultValue: '' })
+  }, [abi, formMethods])
+
+  useEffect(() => {
+    formMethods.resetField(CustomTxFields.contractFunction, { defaultValue: '' })
+  }, [functionsList, formMethods])
+
   useEffect(() => {
     if (selectedABIFunctionEntry) {
-      console.log('changed selected ABI entry')
+      formMethods.resetField(CustomTxFields.value, { defaultValue: '' })
 
-      formMethods.unregister(CustomTxFields.functionInputs)
+      formMethods.resetField(CustomTxFields.functionInputs, { defaultValue: [] })
     }
   }, [selectedABIFunctionEntry, formMethods])
 
@@ -183,6 +248,20 @@ export const CreateCustomTxTransfer = ({
             />
           )}
 
+          {selectedABIFunctionEntry && selectedABIFunctionEntry.stateMutability == 'payable' && (
+            <FormControl fullWidth sx={{ mt: 1 }} error={!!errors.value}>
+              <TextField
+                error={!!errors.value}
+                defaultValue={undefined}
+                {...formMethods.register(`value`, getSolidityValidationRules('uint256', 'value'))}
+                label={`value (uint256)`}
+                variant="outlined"
+                fullWidth
+              />
+              <FormHelperText>{errors.value?.message as string}</FormHelperText>
+            </FormControl>
+          )}
+
           {selectedABIFunctionEntry &&
             selectedABIFunctionEntry!.inputs?.map((param, idx) => {
               const fieldName = param.name || `arg${idx}`
@@ -196,9 +275,10 @@ export const CreateCustomTxTransfer = ({
                 >
                   <TextField
                     error={!!(errors.functionInputs as Record<string, any>)?.[fieldName]}
-                    {...formMethods.register(`functionInputs.${fieldName}` as any, {
-                      required: `${fieldName} is required`,
-                    })}
+                    {...formMethods.register(
+                      `functionInputs.${fieldName}` as any,
+                      getSolidityValidationRules(param.type, fieldName),
+                    )}
                     label={`${fieldName} (${param.type})`}
                     variant="outlined"
                     fullWidth

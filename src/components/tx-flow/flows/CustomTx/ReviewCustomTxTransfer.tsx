@@ -23,29 +23,27 @@ const ReviewCustomTxTransfer = ({
       setNonce(txNonce)
     }
 
-    console.log('params:', params)
-
     const contractInterface = new Interface(params.abi)
-
-    console.log('contractInterface:', contractInterface)
 
     const functionParams = []
 
     for (const paramName in params.functionInputs) {
-      const value = params.functionInputs[paramName]
+      const value = params.functionInputs[paramName].trim()
 
-      functionParams.push(value)
+      if (value.startsWith('[')) {
+        functionParams.push(JSON.parse(value))
+      } else {
+        functionParams.push(value)
+      }
     }
 
     console.log('functionParams:', functionParams)
 
     const txParams: MetaTransactionData = {
       to: params.contractAddress,
-      value: '0',
+      value: params.value != '' ? params.value : '0',
       data: contractInterface.encodeFunctionData(params.contractFunction, functionParams),
     }
-
-    console.log('txParams:', txParams)
 
     createTx(txParams, txNonce).then(setSafeTx).catch(setSafeTxError)
   }, [params, txNonce, setNonce, setSafeTx, setSafeTxError])
