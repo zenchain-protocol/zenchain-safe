@@ -1,4 +1,4 @@
-import { type ReactElement, useContext, useEffect, useMemo } from 'react'
+import { type ReactElement, useContext, useEffect, useMemo, useRef } from 'react'
 import { type TokenInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import { Controller, FormProvider, type RegisterOptions, useForm } from 'react-hook-form'
 import { isAddress } from 'ethers/lib/utils'
@@ -100,7 +100,9 @@ export const CreateCustomTxTransfer = ({
     [abiEntries],
   )
 
-  const selectedFunctionName = watch('contractFunction')
+  const prevFunctionsList = useRef(functionsList)
+
+  const selectedFunctionName = watch(CustomTxFields.contractFunction)
 
   const selectedABIFunctionEntry = useMemo(
     () => abiEntries.find((e) => e.name === selectedFunctionName),
@@ -160,15 +162,13 @@ export const CreateCustomTxTransfer = ({
   }
 
   useEffect(() => {
-    formMethods.resetField('contractFunction', { defaultValue: '' })
+    if (prevFunctionsList.current !== functionsList) {
+      formMethods.resetField(CustomTxFields.contractFunction, { defaultValue: '' })
+      formMethods.resetField(CustomTxFields.functionInputs, { defaultValue: [] })
+      formMethods.resetField(CustomTxFields.value, { defaultValue: '' })
 
-    formMethods.resetField('functionInputs', { defaultValue: {} })
-
-    formMethods.resetField('value', { defaultValue: '' })
-  }, [abi, formMethods])
-
-  useEffect(() => {
-    formMethods.resetField(CustomTxFields.contractFunction, { defaultValue: '' })
+      prevFunctionsList.current = functionsList
+    }
   }, [functionsList, formMethods])
 
   useEffect(() => {
@@ -191,7 +191,6 @@ export const CreateCustomTxTransfer = ({
             <Controller
               name="abi"
               control={formMethods.control}
-              defaultValue={undefined}
               rules={{
                 required: 'ABI is required',
                 validate: (value: string) => {
@@ -223,7 +222,6 @@ export const CreateCustomTxTransfer = ({
             <Controller
               name="contractFunction"
               control={formMethods.control}
-              defaultValue={undefined}
               rules={{ required: 'Pick a function to call' }}
               render={({ field, fieldState: { error } }) => (
                 <FormControl fullWidth error={!!error} sx={{ mt: 1 }}>

@@ -37,8 +37,6 @@ const ReviewCustomTxTransfer = ({
       }
     }
 
-    console.log('functionParams:', functionParams)
-
     const txParams: MetaTransactionData = {
       to: params.contractAddress,
       value: params.value != '' ? params.value : '0',
